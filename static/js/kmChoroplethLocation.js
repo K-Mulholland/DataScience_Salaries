@@ -22,8 +22,30 @@ const source = './data/DS_Salary.csv';
 
 // Read in the CSV file
 d3.csv(source).then(function(data) {
-  processData(data);
+  //processData(data);
+  console.log("data_here", data)
 });
+
+
+// Create my global variablies for the mapping-------------------------------------------------------------
+
+// Trace 1 Average Salary by Country 2020
+Country, Average
+
+// Trace 2: Average Salary by Country 2021
+
+
+// Trace 3:  Average Salary by Country 2022
+
+
+// Create function to average salaries by country and year-------------------------------------------------
+//Column title names from csv file to be used in calculations: 
+//work_year, salary_in_usd, Company_location,company_location_3Char
+
+
+
+
+
 
 
 // Create a map object
