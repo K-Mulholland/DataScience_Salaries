@@ -18,32 +18,35 @@
 //both attempts eliminate map image
 
 // adding path to csv attempt 3 (used Jeff's code)
-const source = './data/DS_Salary.csv';
-
-// Read in the CSV file
-d3.csv(source).then(function(data) {
-  //processData(data);
-  console.log("data_here", data)
-});
-
-
-// Create my global variablies for the mapping-------------------------------------------------------------
-
-// Trace 1 Average Salary by Country 2020
-Country, Average
-
-// Trace 2: Average Salary by Country 2021
-
-
-// Trace 3:  Average Salary by Country 2022
-
-
-// Create function to average salaries by country and year-------------------------------------------------
-//Column title names from csv file to be used in calculations: 
-//work_year, salary_in_usd, Company_location,company_location_3Char
+const source = './data/cc_Salary.geojson';
 
 
 
+
+
+// // Get the data with d3.
+// d3.json(geoData).then(function(data) {
+
+// 	// Create a new choropleth layer.
+// 	geojson = L.choropleth(data, {
+  
+// 	  // Define which property in the features to use.
+// 	  valueProperty: "DP03_16E",
+  
+// 	  // Set the color scale...use this if can't get chroma library below to work
+// 	  scale: ["#ffffb2", "#b10026"],
+  
+// 	  // The number of breaks in the step range
+// 	  steps: 10,
+  
+// 	  // q for quartile, e for equidistant, k for k-means
+// 	  mode: "q",
+// 	  style: {
+// 		// Border color
+// 		color: "#fff",
+// 		weight: 1,
+// 		fillOpacity: 0.8
+// 	  },
 
 
 
@@ -61,19 +64,20 @@ const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-// Adding in shapes of the countries
-// L.geoJson(World_Countries).addTo(map);
 
-
-
-// // Plugin to create breaks in numerical values and assigns varying colors
-
-L.choropleth(geojsonData, {
-	valueSalary: 'countries', // which value in countries to use
-	scale: ['white', 'red'], // chroma.js scale - include as many as you like
-	steps: 4, // number of breaks or steps in range
-	mode: 'q', // q for quantile, e for equidistant, k for k-means
-	style: {
+// Read in the CSV file
+d3.json(source).then(function(data) {
+	//processData(data);
+  console.log("data_here", data)
+	// Create a new choropleth layer.
+	geojson = L.choropleth(data, {
+  
+		// // Define which property in the features to use (is this tag correct?  check this)
+		valueProperty: "Avg Salary",
+		scale: ['white', 'red'], // chroma.js scale - include as many as you like
+		steps: 4, // number of breaks or steps in range
+		mode: 'q', // q for quantile, e for equidistant, k for k-means
+		style: {
 		color: '#fff', // border color
 		weight: 2,
 		fillOpacity: 0.8
@@ -82,5 +86,22 @@ L.choropleth(geojsonData, {
 		layer.bindPopup(feature.properties.value)
 	}
 }).addTo(map)
+
+// // Plugin to create breaks in numerical values and assigns varying colors
+
+// L.choropleth(geojsonData, {
+// 	valueSalary: 'countries', // which value in countries to use
+// 	scale: ['white', 'red'], // chroma.js scale - include as many as you like
+// 	steps: 4, // number of breaks or steps in range
+// 	mode: 'q', // q for quantile, e for equidistant, k for k-means
+// 	style: {
+// 		color: '#fff', // border color
+// 		weight: 2,
+// 		fillOpacity: 0.8
+// 	},
+// 	onEachFeature: function(feature, layer) {
+// 		layer.bindPopup(feature.properties.value)
+// 	}
+// }).addTo(map)
 
 
