@@ -1,5 +1,7 @@
-// adding path to csv
-// may need to add 3 letter country codes from excel
+
+
+
+// adding path to csv attempt 1
 // const source = 'DS_Salary.csv';
 
 // Perform a GET request to the query URL and get the data
@@ -8,10 +10,24 @@
 //   processData(data);
 // });
 
-// geoJSON of country shape declared as variable within that file
+// // adding path to csv attempt 2
+// CSV_FILE = "DS_Salary.csv"
+
+// data = pandas.read_csv(CSV_FILE)
+
+//both attempts eliminate map image
+
+// adding path to csv attempt 3 (used Jeff's code)
+const source = './data/DS_Salary.csv';
+
+// Read in the CSV file
+d3.csv(source).then(function(data) {
+  processData(data);
+});
+
 
 // Create a map object
-// Zoom to 1 for global map view
+// Zoom to 2.5 for global map view
 
 const map = L.map('map', {
   center: [40.5912574, -40.8506107],
@@ -25,5 +41,24 @@ const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
 
 // Adding in shapes of the countries
 // L.geoJson(World_Countries).addTo(map);
+
+
+
+// // Plugin to create breaks in numerical values and assigns varying colors
+
+L.choropleth(geojsonData, {
+	valueSalary: 'countries', // which value in countries to use
+	scale: ['white', 'red'], // chroma.js scale - include as many as you like
+	steps: 4, // number of breaks or steps in range
+	mode: 'q', // q for quantile, e for equidistant, k for k-means
+	style: {
+		color: '#fff', // border color
+		weight: 2,
+		fillOpacity: 0.8
+	},
+	onEachFeature: function(feature, layer) {
+		layer.bindPopup(feature.properties.value)
+	}
+}).addTo(map)
 
 
