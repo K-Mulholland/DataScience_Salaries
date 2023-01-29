@@ -1,23 +1,4 @@
-
-
-
-// adding path to csv attempt 1
-// const source = 'DS_Salary.csv';
-
-// Perform a GET request to the query URL and get the data
-// //d3.csv(source).then(function(data) {
-//   console.log(data);
-//   processData(data);
-// });
-
-// // adding path to csv attempt 2
-// CSV_FILE = "DS_Salary.csv"
-
-// data = pandas.read_csv(CSV_FILE)
-
-//both attempts eliminate map image
-
-// adding path to csv attempt 3 (used Jeff's code)
+// adding path to csv 
 const source = './data/cc_Salary.geojson';
 
 
@@ -64,6 +45,7 @@ const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
+var geoJson;
 
 // Read in the CSV file
 d3.json(source).then(function(data) {
@@ -74,7 +56,7 @@ d3.json(source).then(function(data) {
   
 		// // Define which property in the features to use (is this tag correct?  check this)
 		valueProperty: "Avg Salary",
-		scale: ['white', 'red'], // chroma.js scale - include as many as you like
+		scale: ['#ffffb2', '#b10026'], // chroma.js scale - include as many as you like
 		steps: 4, // number of breaks or steps in range
 		mode: 'q', // q for quantile, e for equidistant, k for k-means
 		style: {
@@ -85,7 +67,7 @@ d3.json(source).then(function(data) {
 	onEachFeature: function(feature, layer) {
 		layer.bindPopup(feature.properties.value)
 	}
-}).addTo(map)
+}).addTo(map);})
 
 // // Plugin to create breaks in numerical values and assigns varying colors
 
