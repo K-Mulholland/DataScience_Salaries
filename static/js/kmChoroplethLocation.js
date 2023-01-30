@@ -12,21 +12,10 @@ const map = L.map('map', {
 
 // Add a tile layer.
 
-//misaligned version
-// const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-// }).addTo(map);
+const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
 
-//code for alignment
-function initialize() {
-	map = L.map('map');
-	L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
-		maxZoom: 2.5,
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery Â© <a href="http://cloudmade.com">CloudMade</a>'
-	}).addTo(map);
-	
-	map.locate({setView: true, maxZoom: 2.5});    
-	} 
 
 var geojson;
 
@@ -40,6 +29,8 @@ d3.json(source).then(function(data) {
 
 	// Create a new choropleth layer.
 	geojson = L.choropleth(data, {
+
+		
   
 
 		// // Define which property in the features to use
