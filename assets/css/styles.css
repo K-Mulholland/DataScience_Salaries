@@ -18,6 +18,7 @@ h1 {
   
   h3 {
     margin-top:20px;
+    color: rgb(83, 141, 126);
     /* background-color:rgb(194, 197, 194);
     color: orange;
     font-size: 30px;
@@ -27,7 +28,7 @@ h1 {
   h4 {
     margin-top:20px;
     color: rgb(83, 141, 126);
-    text-align: center;
+    text-align: left;
     /* background-color:rgb(194, 197, 194);
   
     font-size: 30px;
@@ -123,6 +124,6 @@ h1 {
     position: relative;
     border: 1px solid black;
     border-radius: 8px;
-    height: 600px;  /* or as desired */
+    height: 600px;  /* 600 or as desired */
     width: 100%;  /* This means "100% of the width of its container"*/
   }
