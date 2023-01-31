@@ -29,6 +29,17 @@
     <!-- $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $   Your Javascript Here $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ -->
     <script src="./static/js/PositionChart.js" defer ></script>
     
+    <!---- Start Dark mode pluggin ----------------------------------------------------------------------------------->
+     <!-- https://darkmodejs.learn.uno/ -->
+     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script>
+      function addDarkmodeWidget() {
+        new Darkmode().showWidget();
+      }
+      window.addEventListener('load', addDarkmodeWidget);
+    </script>
+    <!---- End Dark mode pluggin ------------------------------------------------------------------------------------->
+
     
   </head>
 
@@ -113,7 +124,7 @@
       <!-- Row 4: first row of figures --------------------------------------------------->
       <div class="row">
         <!-- Top left figure -->
-        <div class="col-md-5">
+        <div class="col-md-7">
 
           <!-- Figure heading -->
           <h4>Position Impact</h4>
@@ -124,7 +135,7 @@
         </div>
 
         <!-- blank column for spacing -->
-        <div class="col-md-1"></div>
+        <!-- <div class="col-md-1"></div> -->
 
         <!-- Top right figure -->
         <div class="col-md-5">
